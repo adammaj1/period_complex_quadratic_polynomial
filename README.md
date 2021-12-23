@@ -16,7 +16,7 @@ Numerical precision: double numbers
 
 
 # input data for tests
-List centers = hyperbolic components centers of Mandelbrot sets  = Nucleus of a Mu-Atoms
+[List of centers](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set/centers#Lists_of_centers) = hyperbolic components centers of Mandelbrot sets  = Nucleus of a Mu-Atoms
 * REALONLY.TXT = real component centers of Mandelbrot Set for period less than 16 by Jay R. Hill. probably computed using : FINDPERC.EXE , here modified version is used
 * [ feature-database.csv = a database of all islands up to period 16, found by tracing external rays by 	Claude Heiland-Allen](http://mathr.co.uk/mandelbrot/feature-database.csv.bz2)
 
@@ -54,6 +54,11 @@ Check input values from
 
 # see also
 * [Describe-iterated-map](https://github.com/adammaj1/Describe-iterated-map-) - numerical periodicity detection of a polynomial and rational Julia set in C++
+* [mandelbrot-numerics-nucleus](https://gitlab.com/adammajewski/mandelbrot-numerics-nucleus) - [wikibooks](https://en.wikibooks.org/wiki/Fractals/mandelbrot-numerics#nucleus)
+* [the code in C to compute the roots ( centers of comoponents of Mandelbrot sets ) via the homotopy continuation method by Dr. Piers Lawrence](https://gitlab.com/adammajewski/lawrence)
+* [Program for finding centers of Mandelbrot set components by knighty](https://gitlab.com/adammajewski/cpp-mandelbrot-center-by-knighty)
+* [fractalforums.com: the-mandelbrot-polynomial-roots-challenge](https://www.fractalforums.com/theory/the-mandelbrot-polynomial-roots-challenge/)
+
 
 
 # git
