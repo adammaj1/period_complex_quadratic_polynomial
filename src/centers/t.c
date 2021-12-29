@@ -166,7 +166,7 @@ int read_test_file(char *FileName){
 
 int main(void)
 {
-   read_test_file("./r.txt"); 
+   read_test_file("./m.txt"); 
    // printf(" period ( c = %f%+f) = %d \n", 0.0, 0.0, GivePeriod(0.0));
    return 0;
 }
