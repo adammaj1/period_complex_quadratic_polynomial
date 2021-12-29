@@ -126,7 +126,7 @@ int test (int period, double re, double im){
 
 
 // https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
-int read_test_file(char *FileName){
+int read_test_file(const char *FileName){
 
 	FILE * fp; // file with test data : period re im 
     	char * line = NULL;
@@ -161,12 +161,28 @@ int read_test_file(char *FileName){
 
 }
 
+static void usage(const char *progname) {
+	fprintf ( stderr     , "program reads data from txt files\n");
+	fprintf ( stderr     , "data format : period center_x center_y\n" );
+	fprintf ( stderr     , "usage: %s filename\n"     , progname);
+   	fprintf ( stderr     , "example\n"     );
+  	fprintf ( stderr     , "%s ./lists/realonly.txt\n", progname );
+
+}
 
 
 
-int main(void)
+int main(int argc, char *argv[])
 {
-   read_test_file("./m.txt"); 
-   // printf(" period ( c = %f%+f) = %d \n", 0.0, 0.0, GivePeriod(0.0));
-   return 0;
+
+	// check input
+  	if (argc != 2) 
+  		{ usage(argv[0]);     return 1; }
+    
+    	const char* filename = argv[1];
+	// read and test
+   	read_test_file(filename); 
+   	// printf(" period ( c = %f%+f) = %d \n", 0.0, 0.0, GivePeriod(0.0));
+   	
+   	return 0;
 }
