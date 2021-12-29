@@ -3,11 +3,12 @@ Numerical period detection of [complex quadratic polynomial](https://en.wikipedi
 
 # algorithm
 * choose parameter c
-* compute critical orbit ( forward orbit of critical point z = 0)
-* find period: 
-  * make iMax forward iterations to fall into attracting cycle
-  * make iMax forward iterations to compute attracting cycle
-  * check backwards whether the last iterate has already been visited before
+* compute critical orbit ( forward orbit of critical point ) and find period of it's limit cycle:  
+  * start with critical point:  z = z0 = 0.0 
+  * make n forward iterations of z0 to (possibly) fall into attracting cycle
+  * now z = zn
+  * make n forward iterations of zn to compute attracting cycle
+  * check backwards whether the last iterate z has already been visited before 
   
 Max iteration and precision ( epsilon ) might need to be adjusted
 Numerical precision: double numbers
@@ -19,7 +20,7 @@ Numerical precision: double numbers
 [List of centers](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set/centers#Lists_of_centers) = hyperbolic components centers of Mandelbrot sets  = Nucleus of a Mu-Atoms
 * REALONLY.TXT = real component centers of Mandelbrot Set for period less than 16 by Jay R. Hill. probably computed using : FINDPERC.EXE , here modified version is used
 * [ feature-database.csv = a database of all islands up to period 16, found by tracing external rays by 	Claude Heiland-Allen](http://mathr.co.uk/mandelbrot/feature-database.csv.bz2)
-
+* largest-islands.txt by [Robert Munafo, (c) 1987-2020] (https://www.mrob.com/pub/muency/largestislands.html)
 
 ##  failed tests
 only 8 from  values failed ( one value is listed twice): 
@@ -48,8 +49,14 @@ Check input values from
 
 
 # Files
+
+## center lists
+Period Center_x center_y
 * [r.txt](./src/r.txt) input data : only real centers . This is modified version of REALONLY.TXT with updates
 * [n.txt](./src/n.txt) input data : centers . This is modified version of feature-database.csv
+
+Period Center_x center_y Size itmax 
+* largest-islands.txt by [Robert Munafo, (c) 1987-2020] (https://www.mrob.com/pub/muency/largestislands.html)
 
 
 # see also
