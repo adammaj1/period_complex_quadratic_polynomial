@@ -19,8 +19,8 @@ Numerical precision: double numbers
 # input data for tests
 [List of centers](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set/centers#Lists_of_centers) = hyperbolic components centers of Mandelbrot sets  = Nucleus of a Mu-Atoms
 * REALONLY.TXT = real component centers of Mandelbrot Set for period less than 16 by Jay R. Hill. probably computed using : FINDPERC.EXE , here modified version is used
-* [ feature-database.csv = a database of all islands up to period 16, found by tracing external rays by 	Claude Heiland-Allen](http://mathr.co.uk/mandelbrot/feature-database.csv.bz2)
-* largest-islands.txt by [Robert Munafo, (c) 1987-2020] (https://www.mrob.com/pub/muency/largestislands.html)
+* [ feature-database.csv = a database of all islands up to period 16, found by tracing external rays by 	Claude Heiland-Allen](http://mathr.co.uk/mandelbrot/feature-database.csv.bz2): period, islandhood, angled internal address, lower external angle numerator, denominator, upper numerator, denominator, orientation, size, centre realpart, imagpart
+* [largest-islands.txt by Robert Munafo, (c) 1987-2020](https://www.mrob.com/pub/muency/largestislands.html): Rank, Period, Coordinates, Size, itmax used for area measurement, area estimate, and R2-name 
 
 ##  failed tests
 only 8 from  values failed ( one value is listed twice): 
@@ -50,13 +50,13 @@ Check input values from
 
 # Files
 
-## center lists
+## list of centers
 Period Center_x center_y
-* [r.txt](./src/r.txt) input data : only real centers . This is modified version of REALONLY.TXT with updates
-* [n.txt](./src/n.txt) input data : centers . This is modified version of feature-database.csv
+* [realonly.txt](./src/centers/lists/realonly.txt) input data : only real centers . This is modified version of REALONLY.TXT with updates
+* [feature-database.txt](./src/centers/lists/feature-database.txt) input data : centers . This is modified version of feature-database.csv
 
 Period Center_x center_y Size itmax 
-* largest-islands.txt by [Robert Munafo, (c) 1987-2020] (https://www.mrob.com/pub/muency/largestislands.html)
+* [largest-islands.txt](./src/centers/lists/largest-islands.txt) by [Robert Munafo, (c) 1987-2020] (https://www.mrob.com/pub/muency/largestislands.html)
 
 
 # see also
@@ -105,3 +105,7 @@ to overwrite
 ```git
 git mv -f 
 ```
+
+
+local repo : ~/Dokumenty/mandelbrot_chaotic/period/test/t0/
+
