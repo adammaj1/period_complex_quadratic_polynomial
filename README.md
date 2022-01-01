@@ -51,7 +51,7 @@ Check input values from
 # Files
 
 ## list of centers
-Period Center_x center_y
+[Lists :  Period Center_x center_y](./src/centers/lists/)
 * [realonly.txt](./src/centers/lists/realonly.txt) input data : only real centers . This is modified version of REALONLY.TXT with updates
 * [feature-database.txt](./src/centers/lists/feature-database.txt) input data : centers . This is modified version of feature-database.csv
 
@@ -105,6 +105,12 @@ to overwrite
 ```git
 git mv -f 
 ```
+
+Local repo 
+```
+~/Dokumenty/mandelbrot_chaotic/period/period_complex_quadratic_polynomial/
+```
+
 
 
 local repo : ~/Dokumenty/mandelbrot_chaotic/period/test/t0/
