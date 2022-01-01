@@ -15,14 +15,17 @@ Numerical precision: double numbers
 
 
 
+# Tests
+* check the center ( = nucleus) of Mandelbrot set's hyperbolic component  with known period. It uses list of centers
+* use [period doubling cascade along real axis](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/1over2_family). 
 
-# input data for tests
+## input data for center tests
 [List of centers](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set/centers#Lists_of_centers) = hyperbolic components centers of Mandelbrot sets  = Nucleus of a Mu-Atoms
 * REALONLY.TXT = real component centers of Mandelbrot Set for period less than 16 by Jay R. Hill. probably computed using : FINDPERC.EXE , here modified version is used
 * [ feature-database.csv = a database of all islands up to period 16, found by tracing external rays by 	Claude Heiland-Allen](http://mathr.co.uk/mandelbrot/feature-database.csv.bz2): period, islandhood, angled internal address, lower external angle numerator, denominator, upper numerator, denominator, orientation, size, centre realpart, imagpart
 * [largest-islands.txt by Robert Munafo, (c) 1987-2020](https://www.mrob.com/pub/muency/largestislands.html): Rank, Period, Coordinates, Size, itmax used for area measurement, area estimate, and R2-name 
 
-##  failed tests
+###  failed tests
 only 8 from  values failed ( one value is listed twice): 
 ```
 not OK c = -1.9999999862123214+0.0000000000000000 period = 15 != -1
@@ -44,6 +47,21 @@ Check input values from
 * c = 0.314559489984000  -0.029273969079000 i    period = 13, so input period is wrong
 * c = 0.305676541495292  -0.022993426374099 i    period = 14, so input period is wrong
 * c = 0.298448008903995  -0.018383367322073 i    period = 15, so input period is wrong
+
+## Period doubling cascade
+
+
+Real slice of Mandelbrot set : [-2,0.25]  
+
+[Check the period for values along real axis between root points](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/1over2_family#Root_points): 
+* real c greater then 0.25. Critical points escapes so period = 0
+* real c from 0.25 to -0.75 should give period = 1 = 2^0
+* real c from -0.75 to -1.25 should give period = 2 = 2^1
+* real c from -1.25 to -1.3680989 should give period = 4 = 2^2
+* ...
+* real c from c(n) to c(n+1) should give period = 2^n
+
+[Exponential mapping](https://en.wikibooks.org/wiki/Fractals/Computer_graphic_techniques/2D/plane#Exponential_map) helps to make it endlessly
 
 
 
