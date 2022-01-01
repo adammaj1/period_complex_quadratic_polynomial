@@ -113,5 +113,5 @@ Local repo
 
 
 
-local repo : ~/Dokumenty/mandelbrot_chaotic/period/test/t0/
+
 
