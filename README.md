@@ -10,9 +10,12 @@ Numerical period detection of [complex quadratic polynomial](https://en.wikipedi
   * make n forward iterations of zn to compute attracting cycle
   * check backwards whether the last iterate z has already been visited before 
   
-Max iteration and precision ( epsilon ) might need to be adjusted
+Max iteration and precision ( epsilon ) might need to be adjusted  
+
 Numerical precision: double numbers
 
+# efficiency
+*  ["for example, c=1/4−10^{−10} takes over 800000 iterations to reach a fixed point in double precision floating point, but 20 iterations of Newton's method suffice to reach a fixed point. The two fixed points are slightly different, but both are fixed (each to themselves) in double precision."](https://math.stackexchange.com/questions/4502546/function-to-calculate-the-period-of-a-mandelbrot-set-point) - [Claude Heiland-Allen  ](https://mathr.co.uk/)
 
 
 # Tests
