@@ -1,5 +1,11 @@
 Numerical period detection of [complex quadratic polynomial](https://en.wikipedia.org/wiki/Complex_quadratic_polynomial)
 
+# Theory
+* [Cycle detection in wikipedia](https://en.wikipedia.org/wiki/Cycle_detection)
+* [Orbit Detection by Robert P. Munafo, 2008 Mar 14.](https://mrob.com/pub/muency/orbitdetection.html)
+* [Cycle detection and the stack algorithm by G. Nivasch](https://www.gabrielnivasch.org/fun/cycle-detection)
+
+
 
 # Basic algorithm
 
@@ -118,7 +124,12 @@ Period Center_x center_y Size itmax
 * [the code in C to compute the roots ( centers of comoponents of Mandelbrot sets ) via the homotopy continuation method by Dr. Piers Lawrence](https://gitlab.com/adammajewski/lawrence)
 * [Program for finding centers of Mandelbrot set components by knighty](https://gitlab.com/adammajewski/cpp-mandelbrot-center-by-knighty)
 * [fractalforums.com: the-mandelbrot-polynomial-roots-challenge](https://www.fractalforums.com/theory/the-mandelbrot-polynomial-roots-challenge/)
-
+* [Mandelbrot Set Chaos by J. C. Sprott](https://sprott.physics.wisc.edu/chaos/manchaos.htm)
+* [In Defense of Brent's Cycle Detection Algorithm by David Aramant](https://davidaramant.github.io/post/brents-cycle-detection-algorithm/)
+* [algorithmist : Cycle detection](https://algorithmist.com/wiki/Cycle_detection)
+* [projecteuler: Amicable chains (Problem 95) ](https://projecteuler.net/problem=95)
+* [rosettacode : Cycle_detection](https://rosettacode.org/wiki/Cycle_detection)
+ 
 
 
 # git
