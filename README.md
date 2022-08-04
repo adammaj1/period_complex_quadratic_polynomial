@@ -1,7 +1,11 @@
 Numerical period detection of [complex quadratic polynomial](https://en.wikipedia.org/wiki/Complex_quadratic_polynomial)
 
 
-# algorithm
+# Basic algorithm
+
+ " A naive calculation of the period would be done by calculating a sufficiently large number of iterations {z_0, z_1, ...} and then comparing z_n against z_{n-k}$ for k in {1, 2, ..., m} where m is the largest period you want to detect.  If you can find that |z_n - z_{n-k}| < epsilon for sufficiently large n, this suggests a cycle of length k and you would confirm by looking at {|z_n - z_{n-k}|}_{n=n'}^{n'+k} and seeing that these are all sufficiently small. There are more sophisticated approaches, but this is the elementary way." [heropup](https://math.stackexchange.com/questions/4502546/function-to-calculate-the-period-of-a-mandelbrot-set-point)
+
+Steps
 * choose parameter c
 * compute critical orbit ( forward orbit of critical point ) and find period of it's limit cycle:  
   * start with critical point:  z = z0 = 0.0 
@@ -14,21 +18,22 @@ Max iteration and precision ( epsilon ) might need to be adjusted
 
 Numerical precision: double numbers
 
-# efficiency
+## efficiency
 *  ["for example, c=1/4−10^{−10} takes over 800000 iterations to reach a fixed point in double precision floating point, but 20 iterations of Newton's method suffice to reach a fixed point. The two fixed points are slightly different, but both are fixed (each to themselves) in double precision."](https://math.stackexchange.com/questions/4502546/function-to-calculate-the-period-of-a-mandelbrot-set-point) - [Claude Heiland-Allen  ](https://mathr.co.uk/)
+* " You may need very small epsilon and very large n, otherwise for example c=−3/4+10{−10} will probably give an incorrect period of 2 instead of the correct period of 1, which error will compound to an incorrect interior distance estimate (for example distance 3.8e-8 with your method (epsilon 1e-12, n 79,573,343) instead of 2e-10 with my method). " [Claude Heiland-Allen  ](https://mathr.co.uk/)
 
 
-# Tests
+## Tests
 * check the center ( = nucleus) of Mandelbrot set's hyperbolic component  with known period. It uses list of centers
 * use [period doubling cascade along real axis](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/1over2_family). 
 
-## input data for center tests
+### input data for center tests
 [List of centers](https://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Mandelbrot_set/centers#Lists_of_centers) = hyperbolic components centers of Mandelbrot sets  = Nucleus of a Mu-Atoms
 * REALONLY.TXT = real component centers of Mandelbrot Set for period less than 16 by Jay R. Hill. probably computed using : FINDPERC.EXE , here modified version is used
 * [ feature-database.csv = a database of all islands up to period 16, found by tracing external rays by 	Claude Heiland-Allen](http://mathr.co.uk/mandelbrot/feature-database.csv.bz2): period, islandhood, angled internal address, lower external angle numerator, denominator, upper numerator, denominator, orientation, size, centre realpart, imagpart
 * [largest-islands.txt by Robert Munafo, (c) 1987-2020](https://www.mrob.com/pub/muency/largestislands.html): Rank, Period, Coordinates, Size, itmax used for area measurement, area estimate, and R2-name 
 
-###  failed tests
+####  failed tests
 only 8 from  values failed ( one value is listed twice): 
 ```
 not OK c = -1.9999999862123214+0.0000000000000000 period = 15 != -1
@@ -51,7 +56,7 @@ Check input values from
 * c = 0.305676541495292  -0.022993426374099 i    period = 14, so input period is wrong
 * c = 0.298448008903995  -0.018383367322073 i    period = 15, so input period is wrong
 
-## Period doubling cascade
+### Period doubling cascade
 
 
 Real slice of Mandelbrot set : [-2,0.25]  
@@ -65,6 +70,33 @@ Real slice of Mandelbrot set : [-2,0.25]
 * real c from c(n) to c(n+1) should give period = 2^n
 
 [Exponential mapping](https://en.wikibooks.org/wiki/Fractals/Computer_graphic_techniques/2D/plane#Exponential_map) helps to make it endlessly
+
+
+# Algorithm by Claude Heiland-Allen 
+
+What I do to create an image like the one you link, for f_c(z) = z^2 + c:
+* start iteration from $z_0 := 0$, with $m := \infty$
+* for each n = 1, 2, 3, ... in order
+  * calculate z_n := f_c(z_{n-1})
+  * if |z_n| < m
+    * set m := |z_n|
+    * use Newton's method to solve w = f_c^n(w) with initial guess w^{(0)} := z_n (this may fail to converge, in which case continue with the next n), the steps are w^{(i+1)} := w^{(i)} - \frac{f_c^{\circ n}(w^{(i)}) - w^{(i)}}{{f_c^{\circ n}}'(w^{(i)}) - 1}
+    * calculate the derivative of the cycle \lambda := {f_c^{\circ n}}'(w)
+    * if |\lambda| < 1, then the cycle is attractive and c is within a hyperbolic component of period $n$, stop (success).  \lambda$ may used as "interior coordinates" within the hyperbolic component. $w$ and $n$ can be used for interior distance estimation.
+
+The point of using Newton's method is to accelerate the computation of $w$, a point in the limit cycle attractor.  Computing $w$ just by iterating $f_c$ could take many 1000s of iterations, especially when $\lambda$ is close to $1$.
+
+I have no complete proof of correctness (but this doesn't mean I think it is incorrect; the images seem plausible).  It relies on the "atom domains" surrounding each hyperbolic component of a given period.
+
+It also relies on the cycle reached by Newton's method being the same cycle as the limit cycle approached by iteration: this is true for the quadratic Mandelbrot set because there is only one finite critical point, $0$ ($\infty$ is a fixed point) and each attracting or parabolic cycle has a critical point in its immediate basin (see <https://math.stackexchange.com/a/3952801>), which means there can be at most one attracting or parabolic cycle.
+
+For an implementation in C99 you can see my blog post at <https://mathr.co.uk/blog/2014-11-02_practical_interior_distance_rendering.html>
+
+
+
+
+
+
 
 
 
