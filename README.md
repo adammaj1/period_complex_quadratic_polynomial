@@ -1,5 +1,12 @@
 Numerical period detection of [complex quadratic polynomial](https://en.wikipedia.org/wiki/Complex_quadratic_polynomial)
 
+
+# names
+* Periodicity Checking ( Fractint)
+* Orbit Detection ( MuEncy )
+* [Periodicity scan ](https://mathr.co.uk/blog/2017-05-17_periodicity_scan.html)
+
+
 # Theory
 * [Cycle detection in wikipedia](https://en.wikipedia.org/wiki/Cycle_detection)
 * [Orbit Detection by Robert P. Munafo, 2008 Mar 14.](https://mrob.com/pub/muency/orbitdetection.html)
@@ -8,6 +15,8 @@ Numerical period detection of [complex quadratic polynomial](https://en.wikipedi
 
 
 # Basic algorithm
+* ["brute force checking each iteration vs all previous iterates" ](https://www.fractalforums.com/mandelbrot-and-julia-set/how-to-color-by-periodicity/)
+
 
  " A naive calculation of the period would be done by calculating a sufficiently large number of iterations {z_0, z_1, ...} and then comparing z_n against z_{n-k}$ for k in {1, 2, ..., m} where m is the largest period you want to detect.  If you can find that |z_n - z_{n-k}| < epsilon for sufficiently large n, this suggests a cycle of length k and you would confirm by looking at {|z_n - z_{n-k}|}_{n=n'}^{n'+k} and seeing that these are all sufficiently small. There are more sophisticated approaches, but this is the elementary way." [heropup](https://math.stackexchange.com/questions/4502546/function-to-calculate-the-period-of-a-mandelbrot-set-point)
 
@@ -78,7 +87,13 @@ Real slice of Mandelbrot set : [-2,0.25]
 [Exponential mapping](https://en.wikibooks.org/wiki/Fractals/Computer_graphic_techniques/2D/plane#Exponential_map) helps to make it endlessly
 
 
-# Algorithm by Claude Heiland-Allen 
+# other algorithms
+
+
+ solve these equations using numerical methods for solving polynomials - and even something simple such as Newton's method is going to converge a lot faster than finding the cycles just by iterating a single point (as is how bifurcations diagrams are usually made) under fc itself. Milo Brandt[math.stackexchange question: equations-for-mandelbrot-bifurcation-diagram?](https://math.stackexchange.com/questions/3994497/equations-for-mandelbrot-bifurcation-diagram?rq=1) 
+
+
+## Algorithm by Claude Heiland-Allen 
 
 What I do to create an image like the one you link, for f_c(z) = z^2 + c:
 * start iteration from $z_0 := 0$, with $m := \infty$
@@ -125,6 +140,8 @@ Period Center_x center_y Size itmax
 * [Program for finding centers of Mandelbrot set components by knighty](https://gitlab.com/adammajewski/cpp-mandelbrot-center-by-knighty)
 * [fractalforums.com: the-mandelbrot-polynomial-roots-challenge](https://www.fractalforums.com/theory/the-mandelbrot-polynomial-roots-challenge/)
 * [Mandelbrot Set Chaos by J. C. Sprott](https://sprott.physics.wisc.edu/chaos/manchaos.htm)
+* [Fractint algorithm](https://web.archive.org/web/20150220012221/http://www.reocities.com/CapeCanaveral/5003/mandel.htm)
+* [C implementation using Gnofract 4d ](https://github.com/HyveInnovate/gnofract4d/blob/master/examples/cpp/custom_mandelbrot_formula.c#L356-L389)
 * [In Defense of Brent's Cycle Detection Algorithm by David Aramant](https://davidaramant.github.io/post/brents-cycle-detection-algorithm/)
 * [algorithmist : Cycle detection](https://algorithmist.com/wiki/Cycle_detection)
 * [projecteuler: Amicable chains (Problem 95) ](https://projecteuler.net/problem=95)
